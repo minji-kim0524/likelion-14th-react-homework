@@ -1,0 +1,13 @@
+{
+  // 컴파일러 옵션 (TypeScript 옵션을 JavaScript 에도 적용)
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "checkJs": false, // 해당 옵션값 true설정 -> js라도 타입검사와 코드분석 가능
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "node"
+  },
+  // 분석대상 포함/미포함 설정
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

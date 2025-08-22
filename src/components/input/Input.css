@@ -1,0 +1,27 @@
+.inputInfo {
+  inline-size: 284px;
+  block-size: 60px;
+  display: flex;
+  flex-flow: column;
+  row-gap: 8px;
+  border-bottom: 1px solid #d9d9de;
+  margin-block-start: 12px;
+
+  label {
+    font-size: 16px;
+    color: #26262c;
+    font-weight: 600;
+    line-height: 20px;
+    text-align: left;
+  }
+
+  input {
+    font-size: 14px;
+    color: #62636c;
+    font-weight: 400;
+    text-align: left;
+
+    border: none;
+    background-color: #fafafa;
+  }
+}
