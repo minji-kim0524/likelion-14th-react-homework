@@ -1,9 +1,9 @@
 import './Button.css'
 
-export default function Button({ message }) {
+export default function Button({ sign }) {
   return (
     <button className="signButton" type="submit">
-      {message}
+      {sign}
     </button>
   )
 }
