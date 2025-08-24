@@ -5,11 +5,16 @@ import Output from './components/output/Output'
 import './App.css'
 
 function App() {
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    password: '',
+  const [signUpForm, setSignUpForm] = useState({
+    signUpName: '',
+    signUpEmail: '',
+    signUpPassword: '',
     confirmPassword: '',
+  })
+
+  const [signInForm, setSignInForm] = useState({
+    signInEmail: '',
+    signInPassword: '',
   })
 
   const [errorMessage, setErrorMessage] = useState({
@@ -22,31 +27,56 @@ function App() {
   function handleChange(e) {
     const { name, value } = e.target
 
-    setForm((prev) => ({ ...prev, [name]: value }))
+    setSignUpForm((prev) => ({ ...prev, [name]: value }))
+    setSignInForm((prev) => ({ ...prev, [name]: value }))
 
-    if (name === 'name') {
+    if (name === 'signUpName') {
       setErrorMessage((prev) => ({
         ...prev,
-        name: value.length < 2 ? '2글자 이상 입력해주세요' : '',
+        signUpName: value.length < 2 ? '2글자 이상 입력해주세요' : '',
       }))
     }
-    if (name === 'email') {
+    if (name === 'signUpEmail') {
       setErrorMessage((prev) => ({
         ...prev,
-        email: !value.includes('@') ? '이메일 형식이 올바르지 않습니다.' : '',
+        signUpEmail: !value.includes('@')
+          ? '이메일 형식이 올바르지 않습니다.'
+          : '',
       }))
     }
-    if (name === 'password') {
+    if (name === 'signInEmail') {
       setErrorMessage((prev) => ({
         ...prev,
-        password: value.length < 6 ? '6자리 이상이 되게 입력해주세요' : '',
+        signInEmail: !value.includes('@')
+          ? '이메일 형식이 올바르지 않습니다.'
+          : '',
+      }))
+    }
+    if (name === 'signUpPassword') {
+      setErrorMessage((prev) => ({
+        ...prev,
+        signUpPassword:
+          value.length < 6 || !/[a-zA-Z]/.test(value) || !/[0-9]/.test(value)
+            ? '숫자, 영문을 포함하여 6자리 이상이 되게 입력해주세요'
+            : '',
+      }))
+    }
+    if (name === 'signInPassword') {
+      setErrorMessage((prev) => ({
+        ...prev,
+        signInPassword:
+          value.length < 6 || !/[a-zA-Z]/.test(value) || !/[0-9]/.test(value)
+            ? '숫자, 영문을 포함하여 6자리 이상이 되게 입력해주세요'
+            : '',
       }))
     }
     if (name === 'confirmPassword') {
       setErrorMessage((prev) => ({
         ...prev,
         confirmPassword:
-          value !== form.password ? '비밀번호가 일치하지 않습니다.' : '',
+          value !== signUpForm.signUpPassword
+            ? '비밀번호가 일치하지 않습니다.'
+            : '',
       }))
     }
   }
@@ -57,35 +87,41 @@ function App() {
         <Input
           label="이름"
           type="text"
-          name="name"
-          id="name"
+          name="signUpName"
+          id="signUpName"
           placeholder="2글자 이상 입력"
-          value={form.name}
-          onChange={handleChange}
-        />
-        <Output message={errorMessage.name} isVisible={!!errorMessage.name} />
-        <Input
-          label="이메일"
-          type="email"
-          name="email"
-          id="email"
-          placeholder="user@company.io"
-          value={form.email}
-          onChange={handleChange}
-        />
-        <Output message={errorMessage.email} isVisible={!!errorMessage.email} />
-        <Input
-          label="패스워드"
-          type="password"
-          name="password"
-          id="password"
-          placeholder="숫자, 영문 조합 6자리 이상 입력"
-          value={form.password}
+          value={signUpForm.signUpName}
           onChange={handleChange}
         />
         <Output
-          message={errorMessage.password}
-          isVisible={!!errorMessage.password}
+          message={errorMessage.signUpName}
+          isVisible={!!errorMessage.signUpName}
+        />
+        <Input
+          label="이메일"
+          type="email"
+          name="signUpEmail"
+          id="signUpEmail"
+          placeholder="user@company.io"
+          value={signUpForm.signUpEmail}
+          onChange={handleChange}
+        />
+        <Output
+          message={errorMessage.signUpEmail}
+          isVisible={!!errorMessage.signUpEmail}
+        />
+        <Input
+          label="패스워드"
+          type="password"
+          name="signUpPassword"
+          id="signUpPassword"
+          placeholder="숫자, 영문 조합 6자리 이상 입력"
+          value={signUpForm.signUpPassword}
+          onChange={handleChange}
+        />
+        <Output
+          message={errorMessage.signUpPassword}
+          isVisible={!!errorMessage.signUpPassword}
         />
         <Input
           label="패스워드 확인"
@@ -93,7 +129,7 @@ function App() {
           name="confirmPassword"
           id="confirmPassword"
           placeholder="입력한 패스워드 다시 입력"
-          value={form.confirmPassword}
+          value={signUpForm.confirmPassword}
           onChange={handleChange}
         />
         <Output
@@ -102,6 +138,36 @@ function App() {
         />
       </form>
       <Button sign="회원가입" onClick={isValidElement} />
+
+      <form action="#" className="inputForm">
+        <Input
+          label="이메일"
+          type="email"
+          name="signInEmail"
+          id="signInEmail"
+          placeholder="user@company.io"
+          value={signInForm.signInEmail}
+          onChange={handleChange}
+        />
+        <Output
+          message={errorMessage.signInEmail}
+          isVisible={!!errorMessage.signInEmail}
+        />
+        <Input
+          label="패스워드"
+          type="password"
+          name="signInPassword"
+          id="signInPassword"
+          placeholder="숫자, 영문 조합 6자리 이상 입력"
+          value={signInForm.signInPassword}
+          onChange={handleChange}
+        />
+        <Output
+          message={errorMessage.signInPassword}
+          isVisible={!!errorMessage.signInPassword}
+        />
+      </form>
+      <Button sign="로그인" onClick={isValidElement} />
     </>
   )
 }
