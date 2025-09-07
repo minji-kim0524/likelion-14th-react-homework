@@ -28,7 +28,7 @@ const PAGES: NavigationItem[] = [
 
 export default function Navigation() {
   return (
-    <ul className="flex gap-5 justify-center mt-6 mb-4">
+    <ul className="flex gap-10 justify-center mt-6 mb-6">
       {PAGES.map((page) => (
         <li key={page.path} className={navigationBascieStyle()}>
           <Link to={`/${page.path}`}>{page.text}</Link>
