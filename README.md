@@ -9,4 +9,4 @@
 | 1주차 | [1주차 회고록](./md/week1.md) |            |
 | 2주차 | [2주차 회고록](./md/week2.md) |            |
 | 3주차 | [3주차 회고록](./md/week3.md) |            |
-| 4주차 | [4주차 회고록](./md/week4.md) | [4주차과제 배포주소](react-homework-minji.netlify.app/)
+| 4주차 | [4주차 회고록](./md/week4.md) | [4주차과제 배포주소](https://react-homework-minji.netlify.app/)
