@@ -27,12 +27,13 @@ export default function SignUP() {
   const onSubmit = async (formData: SignUpForm) => {
     if (isSubmitting) return
 
-    const { error, data } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       // 필수
       email: formData.email,
       password: formData.password,
       // 선택
       options: {
+        emailRedirectTo: `${window.location.origin}/signin`,
         data: {
           username: formData.name,
           bio: formData.bio,
