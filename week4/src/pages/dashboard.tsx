@@ -1,7 +1,5 @@
-import { JSX } from 'react'
 import Navigation, { type Pages } from '@/components/navigation'
 import Router from '@/routes/Router'
-import Notice from './notice'
 import SignUP from './sign-up'
 
 export default function DashBoard() {
@@ -12,7 +10,6 @@ export default function DashBoard() {
           Supabase를 이용한 4주차 과제
         </h1>
       </header>
-      <Navigation />
       <SignUP />
     </div>
   )
